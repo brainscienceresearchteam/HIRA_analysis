@@ -24,16 +24,31 @@
 2. 연도레벨
 1) F code를 가진 수진자의 수(모집단 추정 수) - 연령별, 성별, 시/도별
 
-![스크린샷 2021-01-18 오후 1 45 23](https://user-images.githubusercontent.com/68261338/104873947-1018ec00-5995-11eb-82b7-6b6b7e8adf65.png)
+환자표본자료 소개서에는 다음과 같이 기재되어 있음:
+"(입원환자표본자료에만 존재) 0: 외래환자 1% 추출, 1: 입원환자 10% 추출 ※ 1% 외래환자는 해당연도내에 입원내역이 없는 외래환자를 추출"
+
+임의로 10% 추출된 소아청소년환자들의 추출 방식을 역추적하기 위해서 2009년 데이터로 샘플링 가중치, 추출확률과 나머지 항목들간의 상관관계를 분석한 결과:
+- 샘플링 가중치와 추출확률간의 상관관계는 1임을 확인
+- 연령대와 성별이 가장 높은 상관관계를 보임
+
+![스크린샷 2021-01-18 오후 1 45 23](https://user-images.githubusercontent.com/68261338/104874191-a64d1200-5995-11eb-96b5-acd18b4384c3.png)
+
+총 7개의 유니크한 샘플링 가중치가 존재하며, 성별과 연령대별로 데이터를 범주화해본 결과, 0~5세를 제외한 나머지 범주마자 개별적 샘플링 가중치가 부여된 것으로 추정된다
+
 ![스크린샷 2021-01-18 오후 1 46 00](https://user-images.githubusercontent.com/68261338/104873951-1313dc80-5995-11eb-8120-956ef6150b0b.png)
+
+1세 단위로 확인해본 결과, 5세 구간마다 샘플링 가중치가 2가지가 부여된다. 이는, 데이터가 1년간 모든 진료내역을 포함하고 있기 때문에, 생일자 기준으로 샘플링 가중치가 새로 부여될 수 있을 것으로 추정된다
+
 ![스크린샷 2021-01-18 오후 1 46 33](https://user-images.githubusercontent.com/68261338/104873953-13ac7300-5995-11eb-9a10-88d374f5a87c.png)
 
-<img width="402" alt="추출확률 분포" src="https://user-images.githubusercontent.com/68261338/104873850-cfb96e00-5994-11eb-9efd-5eecbe8f4e93.png">
-<img width="406" alt="샘플가중치 분포" src="https://user-images.githubusercontent.com/68261338/104873856-d47e2200-5994-11eb-8c6a-d99ef9726241.png">
+Solarized dark             |  Solarized Ocean          |  Solarized Ocean
+:-------------------------:|:-------------------------:|:-------------------------:
+<img width="449" alt="2009년 전국 남아 인구 비율" src="https://user-images.githubusercontent.com/68261338/104873924-ff687600-5994-11eb-8227-660d81506c03.png">  |  <img width="449" alt="2009 연령군별 남아 진료건수" src="https://user-images.githubusercontent.com/68261338/104873920-fc6d8580-5994-11eb-8e16-c7c1640c9768.png"> | <img width="449" alt="2009년 연령군별 남아 수진자 비율" src="https://user-images.githubusercontent.com/68261338/104873923-fe374900-5994-11eb-8de3-4063889c22ca.png">
 
+<img width="449" alt="2009년 전국 남아 인구 비율" src="https://user-images.githubusercontent.com/68261338/104873924-ff687600-5994-11eb-8227-660d81506c03.png">
 <img width="449" alt="2009 연령군별 남아 진료건수" src="https://user-images.githubusercontent.com/68261338/104873920-fc6d8580-5994-11eb-8e16-c7c1640c9768.png">
 <img width="449" alt="2009년 연령군별 남아 수진자 비율" src="https://user-images.githubusercontent.com/68261338/104873923-fe374900-5994-11eb-8de3-4063889c22ca.png">
-<img width="449" alt="2009년 전국 남아 인구 비율" src="https://user-images.githubusercontent.com/68261338/104873924-ff687600-5994-11eb-8227-660d81506c03.png">
+
 
 
 모집단 추정 수 = 표본환자수 * 가중치(연령별, 성별로 다름) 
